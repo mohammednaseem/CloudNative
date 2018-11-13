@@ -1,0 +1,16 @@
+With AllSpeeder AS (
+    SELECT
+        telemetry.deviceId as deviceid,
+        telemetry.distance as distance,
+        telemetry.engineon as currentenginestatus,
+        telemetry.containerdt as currenttime,
+        Last(telemetry.containerdt) over (partition by telemetry.deviceid limit duration(day,7) 
+              when (telemetry.engineon = 'On2Off')) as engineontime
+    FROM
+        thehub
+    TimeStamp by 
+        telemetry.containerdt
+    where
+        telemetry.engineon = 'Off' or telemetry.engineon = 'On2Off'
+)
+SELECT * INTO outblobby FROM AllSpeeder 

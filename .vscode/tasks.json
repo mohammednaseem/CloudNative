@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Microservices/EventProcessor/DHLM.EventProcessor.API/DHLM.EventProcessor.API.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

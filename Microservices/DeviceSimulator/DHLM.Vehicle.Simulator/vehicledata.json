@@ -1,0 +1,22 @@
+{
+    "0"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 0 , "vehicletype" : "chiller",  "engineon" :  "On2Off", "containerdt" : "0"},
+    "1"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 1 , "vehicletype" : "chiller",  "engineon" :  "Off", "containerdt" : "1"},
+    "2"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 2 , "vehicletype" : "chiller",  "engineon" :  "Off", "containerdt" : "2"}, 
+    "3"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 3 , "vehicletype" : "chiller",  "engineon" :  "Off2On", "containerdt" : "3"}, 
+    "4"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 4 , "vehicletype" : "chiller",  "engineon" :  "On", "containerdt" : "4"}, 
+    "5"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 5 , "vehicletype" : "chiller",  "engineon" :  "On", "containerdt" : "5"}, 
+    "6"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 6 , "vehicletype" : "chiller",  "engineon" :  "On", "containerdt" : "6"}, 
+    "7"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 7 , "vehicletype" : "chiller",  "engineon" :  "On", "containerdt" : "7"},
+    "9"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 9 , "vehicletype" : "chiller",  "engineon" :  "Off", "containerdt" : "9"},
+    "8"  : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 8 , "vehicletype" : "chiller",  "engineon" :  "On2Off", "containerdt" : "8"},
+    "10" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 10, "vehicletype" : "chiller",  "engineon" :  "Off", "containerdt" : "10"},
+    "11" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 11, "vehicletype" : "chiller",  "engineon" :  "Off", "containerdt" : "11"},
+    "12" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 12, "vehicletype" : "chiller",  "engineon" :  "Off2On", "containerdt" : "12"},
+    "13" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 13, "vehicletype" : "chiller",  "engineon" :  "On", "containerdt" : "13"},
+    "14" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 14, "vehicletype" : "chiller",  "engineon" :  "On", "containerdt" : "14"},
+    "15" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 15, "vehicletype" : "chiller",  "engineon" :  "On", "containerdt" : "15"},
+    "16" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 16, "vehicletype" : "chiller",  "engineon" :  "On2Off", "containerdt" : "16"},
+    "17" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 17, "vehicletype" : "chiller",  "engineon" :  "Off", "containerdt" : "17"},
+    "18" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 18, "vehicletype" : "chiller",  "engineon" :  "Off", "containerdt" : "18"},
+    "19" : { "telgramtype" : "telemetry", "deviceId" : 1, "distance" : 19, "vehicletype" : "chiller",  "engineon" :  "Off", "containerdt" : "19"}
+}

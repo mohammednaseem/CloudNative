@@ -1,0 +1,27 @@
+namespace DHLM.DeviceManagement.API.Services
+{    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.Logging;
+
+
+    public class AppLogger : ILogger
+    {        
+        IDisposable BeginScope<TState>(TState state)
+        {
+            
+        }
+
+        public bool IsEnabled(LogLevel logLevel)
+        {
+            return true;
+        }
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+        {
+
+        }
+    }
+}

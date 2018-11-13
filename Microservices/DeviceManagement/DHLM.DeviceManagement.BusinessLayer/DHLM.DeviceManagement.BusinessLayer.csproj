@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.0-preview1-final"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.0-preview1-final"/>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0-preview2-26406-04"/>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.0"/>
+    <PackageReference Include="Microsoft.Azure.Devices" Version="1.17.1"/>
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DHLM.DeviceManagement.DeviceAccess\DHLM.DeviceManagement.DeviceAccess.csproj" />
+    <ProjectReference Include="..\DHLM.DeviceManagement.DeviceAccess.AzureIoTHub\DHLM.DeviceManagement.DeviceAccess.AzureIoTHub.csproj" />
+    <ProjectReference Include="..\DHLM.Common.DataAccess.Repository\DHLM.Common.DataAccess.Repository.csproj" />
+  </ItemGroup>
+</Project>
