@@ -17,7 +17,7 @@ DHLM is a major (fictitious) courier company. They have 1000s of Delivery vehicl
 DHLM has chosen Azure Cloud as the platform where this solution has to be built on and deployed.
 
 ## Propose Architecture
-![alt text](https://github.com/mohammednaseem/CloudNative/tree/master/images/architecture.png "Architecture")
+![alt text](https://github.com/mohammednaseem/CloudNative/blob/master/images/architecture.png "Architecture")
 
 # Course Content (Training for new team members)
 
