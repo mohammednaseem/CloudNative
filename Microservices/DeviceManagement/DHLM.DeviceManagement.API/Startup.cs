@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -11,11 +12,11 @@ using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Authorization;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Cors;
 using DHLM.DeviceManagement.API.ExceptionHandling; 
 using DHLM.DeviceManagement.API.Services;
+using DHLM.DeviceManagement.API.HealthChecks;
 
 namespace DHLM.DeviceManagement.API
 {  
@@ -38,7 +39,7 @@ namespace DHLM.DeviceManagement.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+//            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors(options =>
             {
                  options.AddPolicy("AllowAllOrigins",
@@ -47,19 +48,19 @@ namespace DHLM.DeviceManagement.API
                         builder.AllowAnyOrigin();
                     });
             });
-            
-            // services.AddHealthChecks(checks =>
-            //{
-            //    checks.AddUrlCheck(Configuration["microserviceUrl"],new TimeSpan(0,1,0));
-            //});
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",  new Info { Title = "DHLM API", Version = "v1" });
             });
 
+             services
+                .AddHealthChecks()
+                //.AddCheck<SlowDependencyHealthCheck>("Slow", failureStatus: null, tags: new[] { "ready", })
+                .AddCheck<SlowDependencyHealthCheck>("Slow", failureStatus: null, tags: new[] { "ready", });
+
             //services.AddSingleton<ILogger, AppLogger>();
-            services.AddSingleton<IHostedService, EventOutputProcessor>();
+            services.AddSingleton<IHostedService, EventOutputProcessor>(); 
              
             _logger.LogInformation("Added TodoRepository to services");
         }
@@ -72,6 +73,18 @@ namespace DHLM.DeviceManagement.API
                 _logger.LogInformation("In Development environment");
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHealthChecks("/health/ready", new HealthCheckOptions()
+            {
+                Predicate = (check) => check.Tags.Contains("ready"), 
+            });
+
+            // The liveness filters out all checks and just returns success
+            app.UseHealthChecks("/health/live", new HealthCheckOptions()
+            {
+                // Exclude all checks, just return a 200.
+                Predicate = (check) => false,
+            });
+            
             app.UseCors("AllowAllOrigins");
            // app.UseMiddleware(typeof(ErrorWrappingMiddleware));
             app.UseStaticFiles();

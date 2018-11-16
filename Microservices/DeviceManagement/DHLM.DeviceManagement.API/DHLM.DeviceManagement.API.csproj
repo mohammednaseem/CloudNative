@@ -25,5 +25,6 @@
     <ProjectReference Include="..\DHLM.DeviceManagement.BusinessLayer\DHLM.DeviceManagement.BusinessLayer.csproj" />
     <ProjectReference Include="..\DHLM.Common.DataAccess.Repository\DHLM.Common.DataAccess.Repository.csproj" />
     <ProjectReference Include="..\DHLM.DeviceManagement.DeviceAccess.AzureIoTHub\DHLM.DeviceManagement.DeviceAccess.AzureIoTHub.csproj" />
+    <ProjectReference Include="..\DHLM.DeviceManagement.HealthCheck\Microsoft.AspNetCore.Diagnostics.HealthChecks\Microsoft.AspNetCore.Diagnostics.HealthChecks.csproj" />
   </ItemGroup>
 </Project>

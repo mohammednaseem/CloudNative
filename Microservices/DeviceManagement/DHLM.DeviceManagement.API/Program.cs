@@ -20,7 +20,7 @@ namespace DHLM.DeviceManagement.API
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseUrls("http://*:5000;http://*:80")
-                .UseKestrel()         
+                .UseKestrel()
                 .ConfigureLogging((hostingContext, logging) =>
                 {
                     logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
