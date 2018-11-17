@@ -7,11 +7,11 @@ namespace DHLM.Common.DataAccess.AzureSql
 {
     public class AzureSql : ILogRepository
     {
-        public string StorageAccount { get; }
+        public string SqlConnectionString { get; }
         
-        public AzureSql(string storageAccount)
+        public AzureSql(string sqlConnectionString)
         {
-            StorageAccount = storageAccount;
+            SqlConnectionString = sqlConnectionString;
         }
        
         public string WriteTelegram(string textContents)

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
@@ -14,9 +15,17 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using DHLM.DeviceManagement.API.ExceptionHandling; 
 using DHLM.DeviceManagement.API.Services;
 using DHLM.DeviceManagement.API.HealthChecks;
+using DHLM.DeviceManagement.BusinessLayer.Abstraction;
+using DHLM.DeviceManagement.BusinessLayer.Implementation;
+using DHLM.DeviceManagement.DeviceAccess;
+using DHLM.DeviceManagement.DeviceAccess.AzureIoTHub;
+using DHLM.Common.DataAccess.Repository;
+using DHLM.Common.DataAccess.AzureSql;
+
 
 namespace DHLM.DeviceManagement.API
 {  
@@ -39,7 +48,7 @@ namespace DHLM.DeviceManagement.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-//            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors(options =>
             {
                  options.AddPolicy("AllowAllOrigins",
@@ -54,14 +63,17 @@ namespace DHLM.DeviceManagement.API
                 c.SwaggerDoc("v1",  new Info { Title = "DHLM API", Version = "v1" });
             });
 
-             services
+            string storageAccount = Configuration["SqlConnectionString"];
+            services.AddSingleton<ILogRepository>(a => new AzureSql(storageAccount)); 
+            services.AddSingleton<IDeviceAccess, DeviceTwin>(); 
+            services.AddSingleton<IDeviceManager, DeviceManager>();
+            services.AddSingleton<IHostedService, EventOutputProcessor>(); 
+
+            services
                 .AddHealthChecks()
                 //.AddCheck<SlowDependencyHealthCheck>("Slow", failureStatus: null, tags: new[] { "ready", })
-                .AddCheck<SlowDependencyHealthCheck>("Slow", failureStatus: null, tags: new[] { "ready", });
-
-            //services.AddSingleton<ILogger, AppLogger>();
-            services.AddSingleton<IHostedService, EventOutputProcessor>(); 
-             
+                .AddCheck<DoctorHealthCheck>("Doctor", failureStatus: null, tags: new[] { "ready", });
+            
             _logger.LogInformation("Added TodoRepository to services");
         }
 

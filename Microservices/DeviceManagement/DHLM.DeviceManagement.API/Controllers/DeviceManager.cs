@@ -18,7 +18,7 @@ namespace DHLM.DeviceManagement.API.Controllers
     {
         public IDeviceManager _IDeviceManager { get; }
 
-        public DeviceManagerController(IDeviceManager deviceManager, IConfiguration configuration )
+        public DeviceManagerController(IDeviceManager deviceManager, IConfiguration configuration)
                                                                     : base(configuration)
         {
             _IDeviceManager = deviceManager;
