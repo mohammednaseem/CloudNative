@@ -39,7 +39,7 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
             return true;
         }
 
-        static int initialCounts = 0;
+        static int initialCounts = 1000;
         public bool IsHealthy()
         {
             initialCounts++;
