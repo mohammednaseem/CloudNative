@@ -39,21 +39,12 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
             return true;
         }
 
-        static int initialCounts = 10;
+        
         public bool IsHealthy()
         {
-            initialCounts++;
-            Random r = new Random();
-            int theNumber = r.Next(1, 10);
             if(configuration["UnHealthy"] == "true")
             {
-                if(theNumber > 4)
-                {
-                    if(initialCounts > 10000)
-                    {
-                        return false;
-                    }
-                }
+               return false;
             }            
             return true;
         }
