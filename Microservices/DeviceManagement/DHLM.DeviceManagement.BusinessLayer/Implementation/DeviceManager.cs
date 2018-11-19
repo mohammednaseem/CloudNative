@@ -39,7 +39,7 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
             return true;
         }
 
-        static int initialCounts = 1000;
+        static int initialCounts = 10;
         public bool IsHealthy()
         {
             initialCounts++;
@@ -49,7 +49,7 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
             {
                 if(theNumber > 4)
                 {
-                    if(initialCounts > 10)
+                    if(initialCounts > 10000)
                     {
                         return false;
                     }
