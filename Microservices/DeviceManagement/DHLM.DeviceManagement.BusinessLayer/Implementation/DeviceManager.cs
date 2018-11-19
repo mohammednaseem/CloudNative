@@ -38,15 +38,21 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
             _IRepo.WriteTelegram(updateJson); //convert to async
             return true;
         }
+
+        static int initialCounts = 0;
         public bool IsHealthy()
         {
+            initialCounts++;
             Random r = new Random();
             int theNumber = r.Next(1, 10);
             if(configuration["UnHealthy"] == "true")
             {
                 if(theNumber > 4)
                 {
-                    return false;
+                    if(initialCounts > 10)
+                    {
+                        return false;
+                    }
                 }
             }            
             return true;

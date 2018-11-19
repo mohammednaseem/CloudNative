@@ -72,7 +72,7 @@ namespace DHLM.DeviceManagement.API
             services
                 .AddHealthChecks()
                 //.AddCheck<SlowDependencyHealthCheck>("Slow", failureStatus: null, tags: new[] { "ready", })
-                .AddCheck<DoctorHealthCheck>("Doctor", failureStatus: null, tags: new[] { "ready", });
+                .AddCheck<DoctorHealthCheck>("Doctor", failureStatus: null, tags: new[] { "live", });
             
             _logger.LogInformation("Added TodoRepository to services");
         }
@@ -86,15 +86,14 @@ namespace DHLM.DeviceManagement.API
                 app.UseDeveloperExceptionPage();
             }
             app.UseHealthChecks("/health/ready", new HealthCheckOptions()
-            {
-                Predicate = (check) => check.Tags.Contains("ready"), 
+            {// Exclude all checks, just return a 200.
+                Predicate = (check) => false,
             });
 
             // The liveness filters out all checks and just returns success
             app.UseHealthChecks("/health/live", new HealthCheckOptions()
             {
-                // Exclude all checks, just return a 200.
-                Predicate = (check) => false,
+                Predicate = (check) => check.Tags.Contains("live"), 
             });
             
             app.UseCors("AllowAllOrigins");
