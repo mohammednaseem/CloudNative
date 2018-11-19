@@ -13,15 +13,9 @@ namespace DHLM.DeviceManagement.Tests
         {
             //Values v = new Values();
             // bool isReturnedWaterCold = v.GetWater(10);  
-            //Assert.True(true != isReturnedWaterCold);
+            Assert.True(isCold == false);
         }
 
-        [Fact]
-        public void HotTest()
-        {
-           // Values v = new Values();
-           // bool isReturnedWaterCold = v.GetWater(11);  
-           // Assert.True(isCold != isReturnedWaterCold);
-        }
+      
     }
 }

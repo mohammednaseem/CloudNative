@@ -14,7 +14,7 @@ namespace DHLM.DeviceManagement.Tests
         {
            // Water v = new Water();
            // string waterType = v.GetWater(10);  
-          //  Assert.Equal(coldWater, waterType);
+            Assert.Equal("Cold Water", coldWater);
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace DHLM.DeviceManagement.Tests
         {
            // Water v = new Water();
            // string waterType = v.GetWater(11);  
-           // Assert.Equal(hotWater, waterType);
+           Assert.Equal("Hot Water", hotWater);
         }
     }
 }
