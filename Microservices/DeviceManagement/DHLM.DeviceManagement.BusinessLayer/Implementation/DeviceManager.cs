@@ -44,9 +44,9 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
         {
             try
             {
-                if(configuration["UnHealthy"] == "false")
+                if(configuration["Healthy"] == "true")
                 {
-                    return false;
+                    return true;
                 }
                 else
                 {
@@ -57,7 +57,6 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
             {
                 return true;    
             }        
-            return true;
         }
     }
 }
