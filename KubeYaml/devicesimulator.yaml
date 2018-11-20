@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: devicesimulator
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app:  devicesimulator
+        tier: simulator
+    spec:
+      containers:
+      - name: device-simulator
+        image: naseem.azurecr.io/devicesimulator:0.0.4
+        ports:
+        - containerPort: 80
+        env:              
+        - name: "DeviceName" 
+          value: "aStrangeDevice"
+        - name: "DbType" 
+          value: "AzureStorage"
+      imagePullSecrets:
+      - name: topsecretregistryconnection
+                

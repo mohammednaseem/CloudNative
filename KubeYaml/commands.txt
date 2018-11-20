@@ -1,0 +1,4 @@
+kubectrl create secret docker-registry topsecrettegistryconnection --docker-server naseem.azurecr.io --docker-email naseem.mohammed@slkgroup.com --docker-username=naseem --docker-password FjngB31RGuAmc3aWm/36/vWSGL2GXwhW
+
+
+kubectl create -f "D:\Microservices\yaml\DeviceManagement.yaml"

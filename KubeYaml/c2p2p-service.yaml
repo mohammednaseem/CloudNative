@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: c2p2p-service
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80    
+  - name: https
+    protocol: TCP
+    port: 443    
+  - name: mqtt
+    protocol: TCP
+    port: 8883    
+  selector:
+    app:  c2p2p-iot-hub-potocol-adapter
+    tier: gateway-end

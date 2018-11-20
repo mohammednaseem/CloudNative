@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: c2p2p-iot-hub-potocol-adapter
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  c2p2p-iot-hub-potocol-adapter
+        tier: gateway-end
+    spec:
+      containers:
+      - name: c2p2p-iot-hub-potocol-adapter
+        image: naseem.azurecr.io/c2p2p-protocol-gateway:0.1.1      
+        ports:
+        - containerPort: 8883   
+        env:              
+        - name: "DeviceName" 
+          value: "aStrangeDevice"
+        - name: "DbType" 
+          value: "AzureStorage"
+      imagePullSecrets:
+      - name: topsecretregistryconnection
+                

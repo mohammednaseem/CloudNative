@@ -1,0 +1,35 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: devicemanagement-web-api
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app:  devicemanagement-web-api
+        tier: middle-end
+    spec:
+      containers:
+      - name: devicemanagement-web-api
+        image: naseem.azurecr.io/devicemanagement:22
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80 
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 80
+            httpHeaders:
+            - name: X-Custom-Header
+              value: Awesome
+          initialDelaySeconds: 180
+          periodSeconds: 5
+      imagePullSecrets:
+      - name: topsecretregistryconnection

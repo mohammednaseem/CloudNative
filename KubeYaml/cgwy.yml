@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: custom-gateway
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app:  custom-gateway
+        tier: middle-end
+    spec:
+      containers:
+      - name: custom-gateway
+        image: slkregister.azurecr.io/cgw:0.0.1
+        ports:
+        - containerPort: 80   
+        env:              
+        - name: "servicebusclient" 
+          value: "devicemanagement"
+        - name: "DeviceName" 
+          value: "aStrangeDevice"
+        - name: "ConnString" 
+          value: "HostName=naseemtestinghub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=S6/P3koWnUTbSrenNOKWa0kE/9HFnE+d2EnrnWO0dPI="
+      imagePullSecrets:
+      - name: topsecretregistryconnection
