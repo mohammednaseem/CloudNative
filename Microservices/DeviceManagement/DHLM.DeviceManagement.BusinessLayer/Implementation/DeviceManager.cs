@@ -42,10 +42,21 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
         
         public bool IsHealthy()
         {
-            if(configuration["UnHealthy"] == "false")
+            try
             {
-               return false;
-            }            
+                if(configuration["UnHealthy"] == "false")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }    
+            catch
+            {
+                return true;    
+            }        
             return true;
         }
     }
