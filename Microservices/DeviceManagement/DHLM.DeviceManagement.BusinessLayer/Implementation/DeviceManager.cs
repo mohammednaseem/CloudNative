@@ -57,7 +57,7 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
             }    
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine("Exception occured:" + ex.ToString());
                 return true;    
             }        
         }
