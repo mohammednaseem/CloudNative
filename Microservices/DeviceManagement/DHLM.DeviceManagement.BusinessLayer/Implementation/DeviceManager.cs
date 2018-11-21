@@ -46,7 +46,7 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
             {
                 if(configuration["Healthy"] == "true")
                 {
-                    Console.WriteLine("false statement");
+                    Console.WriteLine("it is a false statement");
                     return true;
                 }
                 else
