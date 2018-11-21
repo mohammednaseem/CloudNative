@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: devicemanagement-web-api
-        image: naseem.azurecr.io/devicemanagement:24
+        image: naseem.azurecr.io/devicemanagement:latest
         resources:
           requests:
             memory: "64Mi"
