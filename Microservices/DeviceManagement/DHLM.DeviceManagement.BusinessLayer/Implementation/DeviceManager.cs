@@ -51,7 +51,7 @@ namespace DHLM.DeviceManagement.BusinessLayer.Implementation
                 }
                 else
                 {
-                    Console.WriteLine("true statement");
+                    Console.WriteLine("it is a true  statement");
                     return true;                    
                 }
             }    
