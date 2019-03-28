@@ -6,7 +6,7 @@ COPY DHLM.Vehicle.Simulator/*.csproj ./
 #COPY DHLM.Vehicle.Simulator/settings.json /app
 #COPY DHLM.Vehicle.Simulator/VehicleData.json /app
 
-RUN dotnet restore
+#RUN dotnet restore
 
 EXPOSE 5000:80
 ENV planet=earth
