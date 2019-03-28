@@ -21,6 +21,6 @@ RUN dotnet publish DHLM.Vehicle.Simulator/DHLM.Vehicle.Simulator.csproj -c Relea
 FROM microsoft/dotnet:2.1-aspnetcore-runtime
 WORKDIR /app
 COPY --from=build-env /app/out .
-COPY DHLM.Vehicle.Simulator/settings.json .
-COPY DHLM.Vehicle.Simulator/vehicledata.json .
+#COPY DHLM.Vehicle.Simulator/settings.json .
+#COPY DHLM.Vehicle.Simulator/vehicledata.json .
 ENTRYPOINT ["dotnet", "DHLM.Vehicle.Simulator.dll"]
