@@ -3,7 +3,7 @@ WORKDIR /app
 
 #Copy csproj and restore as distinct layers
 COPY DHLM.Vehicle.Simulator/*.csproj ./
-COPY DHLM.Vehicle.Simulator/settings.json /app
+#COPY DHLM.Vehicle.Simulator/settings.json /app
 #COPY DHLM.Vehicle.Simulator/VehicleData.json /app
 
 RUN dotnet restore
