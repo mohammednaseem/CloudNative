@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: device-simulator
-        image: naseem.azurecr.io/devicesimulator:0.0.4
+        image: naseem.azurecr.io/devicesimulator:latest
         ports:
         - containerPort: 80
         env:              
