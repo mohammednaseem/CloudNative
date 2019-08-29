@@ -3,10 +3,10 @@ WORKDIR /app
 
 #Copy csproj and restore as distinct layers
 COPY DHLM.Vehicle.Simulator/*.csproj ./
-COPY DHLM.Vehicle.Simulator/settings.json /app
+#COPY DHLM.Vehicle.Simulator/settings.json /app
 #COPY DHLM.Vehicle.Simulator/VehicleData.json /app
 
-RUN dotnet restore
+#RUN dotnet restore
 
 EXPOSE 5000:80
 ENV planet=earth
@@ -21,6 +21,6 @@ RUN dotnet publish DHLM.Vehicle.Simulator/DHLM.Vehicle.Simulator.csproj -c Relea
 FROM microsoft/dotnet:2.1-aspnetcore-runtime
 WORKDIR /app
 COPY --from=build-env /app/out .
-COPY DHLM.Vehicle.Simulator/settings.json .
-COPY DHLM.Vehicle.Simulator/vehicledata.json .
+#COPY DHLM.Vehicle.Simulator/settings.json .
+#COPY DHLM.Vehicle.Simulator/vehicledata.json .
 ENTRYPOINT ["dotnet", "DHLM.Vehicle.Simulator.dll"]
