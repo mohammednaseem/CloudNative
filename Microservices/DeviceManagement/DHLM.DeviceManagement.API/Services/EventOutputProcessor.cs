@@ -1,12 +1,12 @@
+using System;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
 namespace DHLM.DeviceManagement.API.Services
 {    
-    using System;
-    using System.Collections.Concurrent;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Logging;
-
     public class EventOutputProcessor : BackgroundService
     {        
         private readonly ILogger<EventOutputProcessor> _logger;

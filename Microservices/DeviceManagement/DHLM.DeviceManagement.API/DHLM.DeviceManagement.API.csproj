@@ -3,30 +3,32 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\"/>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
-    <PackageReference Include="Swashbuckle" Version="6.0.0-rc1-final" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="2.3.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="2.3.0" />
-    <PackageReference Include="System.Net.Http" Version="4.3.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.WebApiCompatShim" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.Azure.EventHubs" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Azure.EventHubs.Processor" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1"/>
+    <PackageReference Include="Swashbuckle" Version="6.0.0-rc1-final"/>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="2.3.0"/>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="2.3.0"/>
+    <PackageReference Include="System.Net.Http" Version="4.3.3"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.WebApiCompatShim" Version="2.1.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.App"/>
+    <PackageReference Include="Microsoft.Azure.EventHubs" Version="2.1.0"/>
+    <PackageReference Include="Microsoft.Azure.EventHubs.Processor" Version="2.1.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.2"/>
+    <PackageReference Include="Okta.AspNetCore" Version="1.1.1"/>
+    <PackageReference Include="Microsoft.ApplicationInsights.Kubernetes" Version="1.0.1"/>
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1"/>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DHLM.DeviceManagement.BusinessLayer\DHLM.DeviceManagement.BusinessLayer.csproj" />
-    <ProjectReference Include="..\DHLM.Common.DataAccess.Repository\DHLM.Common.DataAccess.Repository.csproj" />
-    <ProjectReference Include="..\DHLM.Common.DataAccess.AzureSql\DHLM.Common.DataAccess.AzureSql.csproj" />
-    <ProjectReference Include="..\DHLM.DeviceManagement.DeviceAccess.AzureIoTHub\DHLM.DeviceManagement.DeviceAccess.AzureIoTHub.csproj" />
-    <ProjectReference Include="..\DHLM.DeviceManagement.HealthCheck\Microsoft.AspNetCore.Diagnostics.HealthChecks\Microsoft.AspNetCore.Diagnostics.HealthChecks.csproj" />
-
+    <ProjectReference Include="..\DHLM.DeviceManagement.BusinessLayer\DHLM.DeviceManagement.BusinessLayer.csproj"/>
+    <ProjectReference Include="..\DHLM.Common.DataAccess.Repository\DHLM.Common.DataAccess.Repository.csproj"/>
+    <ProjectReference Include="..\DHLM.Common.DataAccess.AzureSql\DHLM.Common.DataAccess.AzureSql.csproj"/>
+    <ProjectReference Include="..\DHLM.DeviceManagement.DeviceAccess.AzureIoTHub\DHLM.DeviceManagement.DeviceAccess.AzureIoTHub.csproj"/>
+    <ProjectReference Include="..\DHLM.DeviceManagement.HealthCheck\Microsoft.AspNetCore.Diagnostics.HealthChecks\Microsoft.AspNetCore.Diagnostics.HealthChecks.csproj"/>
   </ItemGroup>
 </Project>

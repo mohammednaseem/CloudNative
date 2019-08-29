@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Threading;
+using System.Security.Claims;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using DHLM.DeviceManagement.BusinessLayer.Abstraction;
 using DHLM.DeviceManagement.BusinessLayer.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DHLM.DeviceManagement.API.Controllers
 {
@@ -33,25 +35,21 @@ namespace DHLM.DeviceManagement.API.Controllers
         }
 
         // GET api/DeviceManager/5
+        [Authorize]
         [HttpGet("{temperature}")]
-        public string Get(int percentage)
-        {          
-            if (percentage < 0 || percentage > 100)
-                return "incorrect number";
-            Stopwatch watch = new Stopwatch();
-            watch.Start();            
-            while (true)
+        public Dictionary<string, string> Get(int temperature)
+        {   
+            var principal = HttpContext.User.Identity as ClaimsIdentity;
+            Dictionary<string, string> allClaims = new Dictionary<string, string>();
+            //var login = principal.Claims
+            //  .SingleOrDefault(c => c.Type == ClaimTypes.NameIdentifier)
+            // ?.Value;
+            foreach(var claim in principal.Claims)
             {
-                // Make the loop go on for "percentage" milliseconds then sleep the 
-                // remaining percentage milliseconds. So 40% utilization means work 40ms and sleep 60ms
-                if (watch.ElapsedMilliseconds > percentage)
-                {
-                    Thread.Sleep(100 - percentage);
-                    watch.Reset();
-                    watch.Start();
-                }
-            }  
-            //return "value";
+                allClaims[claim.Type] = claim.Value;
+            }
+        
+            return allClaims;
         }
  
         // POST api/DeviceManager

@@ -8,9 +8,9 @@ namespace DHLM.Common.Events.EventHQ
     {
         event EventHandler NotifyOnMessage;
 
-//        event EventHandler NotifyOnError;
+//      event EventHandler NotifyOnError;
 
- //       event EventHandler NotifyCloseConnection;
+ //     event EventHandler NotifyCloseConnection;
 
         string Register(Dictionary<string,string> connectionstring);
 

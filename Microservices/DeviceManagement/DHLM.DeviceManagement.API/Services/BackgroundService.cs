@@ -3,15 +3,15 @@
 /// Base class for implementing a long running <see cref="IHostedService"/>.
 /// </summary>
 
+using System;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
 namespace DHLM.DeviceManagement.API.Services
 {    
-    using System;
-    using System.Collections.Concurrent;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Logging;
-
     public abstract class BackgroundService : IHostedService, IDisposable
     {
         private Task _executingTask;

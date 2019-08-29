@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.ApplicationInsights.AspNetCore;
+using Microsoft.ApplicationInsights.Extensibility;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -25,6 +27,11 @@ using DHLM.DeviceManagement.DeviceAccess;
 using DHLM.DeviceManagement.DeviceAccess.AzureIoTHub;
 using DHLM.Common.DataAccess.Repository;
 using DHLM.Common.DataAccess.AzureSql;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.ApplicationInsights.Kubernetes;
+using Okta.AspNetCore;
 
 
 namespace DHLM.DeviceManagement.API
@@ -45,6 +52,10 @@ namespace DHLM.DeviceManagement.API
              _logger = logger;
         }
         
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -61,6 +72,28 @@ namespace DHLM.DeviceManagement.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",  new Info { Title = "DHLM API", Version = "v1" });
+            });
+
+           /* services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = "https://dev-212903.oktapreview.com/oauth2/default";
+                    options.Audience = "api://default";
+                    options.RequireHttpsMetadata = false;
+                });*/
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = OktaDefaults.ApiAuthenticationScheme;
+                options.DefaultChallengeScheme = OktaDefaults.ApiAuthenticationScheme;
+                options.DefaultSignInScheme = OktaDefaults.ApiAuthenticationScheme;
+            })
+            .AddOktaWebApi(new OktaWebApiOptions()
+            {
+                OktaDomain = "https://dev-212903.oktapreview.com",
+                ClientId = "0oahtdomprbxet1fI0h7",
+                //Audience = "api://default",
+                Audience = "api://default",
             });
 
             string storageAccount = Configuration["SqlConnectionString"];
@@ -89,7 +122,7 @@ namespace DHLM.DeviceManagement.API
             {// Exclude all checks, just return a 200.
                 Predicate = (check) => false,
             });
-
+            
             // The liveness filters out all checks and just returns success
             app.UseHealthChecks("/health/live", new HealthCheckOptions()
             {
@@ -100,7 +133,9 @@ namespace DHLM.DeviceManagement.API
            // app.UseMiddleware(typeof(ErrorWrappingMiddleware));
             app.UseStaticFiles();
             app.UseSwagger();
-            app.UseMvc();
+            app.UseAuthentication();
+            
+            app.UseMvcWithDefaultRoute();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "DHLM Device Management Microservice V1");
