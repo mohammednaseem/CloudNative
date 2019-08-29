@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '1b76598d-9326-4099-a964-39261574e626'
-  imageRepository: 'mohammednaseemcloudnative'
+  imageRepository: 'autosolcso'
   containerRegistry: 'emersso.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Microservices/autosol/Dockerfile'
   tag: '$(Build.BuildId)'
