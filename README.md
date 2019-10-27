@@ -49,7 +49,7 @@ DHLM has chosen Azure Cloud as the platform where this solution has to be built 
 | 3 | **API Management** Microservice Orchestration | | Yes |
 ||![alt text](https://github.com/mohammednaseem/CloudNative/blob/master/images/sleep.png "Sleep")|||
 | 4 | **Service Bus** Microservice Choreography | | Yes|
-| 4 | **NGINX Ingress Controller** Ingress <ul><li>Ingress</li><li>Ingress Controller</li><li>Ingress Service</li></ul? | | 
+| 4 | **NGINX Ingress Controller** Ingress <ul><li>Ingress</li><li>Ingress Controller</li><li>Ingress Service</li></ul> | | 
   ||![alt text](https://github.com/mohammednaseem/CloudNative/blob/master/images/food.png "Food")|||
 | 4 | **Revisit Architecture to talk about Security** | Yes | |
 | 4 | **Completing DHLM PoC** - The Device Management Microservice will expose APIs exposed through APIM and Kubernetes Ingress to give DHLM Vehicle information. All the vehicle business rules would be processed with Stream Analytics. This will be streamed to Event Management Microservice and finally to a Database. | | |
