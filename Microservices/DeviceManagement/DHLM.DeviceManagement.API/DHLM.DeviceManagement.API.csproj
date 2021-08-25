@@ -17,7 +17,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App"/>
     <PackageReference Include="Microsoft.Azure.EventHubs" Version="2.1.0"/>
     <PackageReference Include="Microsoft.Azure.EventHubs.Processor" Version="2.1.0"/>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.2"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.30"/>
     <PackageReference Include="Okta.AspNetCore" Version="1.1.1"/>
     <PackageReference Include="Microsoft.ApplicationInsights.Kubernetes" Version="1.0.1"/>
   </ItemGroup>
